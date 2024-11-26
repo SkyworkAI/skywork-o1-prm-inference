@@ -17,7 +17,7 @@ print(response.logits)
 
 1. install vllm and install vllm prm plugin
 ```shell
-pip install vllm==v0.6.4
+pip install vllm==v0.6.4.post1
 git clone https://github.com/SkyworkAI/skywork-o1-prm-inference.git
 cd skywork-o1-prm-inference
 pip install -e .
