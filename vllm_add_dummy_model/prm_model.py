@@ -4,8 +4,6 @@ import re
 import sys
 import vllm
 from torch import nn
-from vllm.scripts import main
-from vllm import ModelRegistry
 from vllm.model_executor.layers.pooler import (
     Optional,
     List,
@@ -279,17 +277,6 @@ class Qwen2ForPrmModel(nn.Module, SupportsPP):
         loader = AutoWeightsLoader(self,
                                 ignore_unexpected_prefixes=["lm_head."])
         loader.load_weights(weights)
-
-   
-    # vllm.model_executor.models.qwen2_rm.Qwen2ForRewardModel = tempQwen2ForRewardModel
-    # from vllm.model_executor.models.registry import _LazyRegisteredModel
-    # @dataclass(frozen=True)
-    # class temp_LazyRegisteredModel(_LazyRegisteredModel):
-    #     def load_model_cls(self):
-    #         return Qwen2ForPrmModel
-    # from vllm.model_executor.models.registry import ModelRegistry
-    # ModelRegistry.models["Qwen2ForPrmModel"] = temp_LazyRegisteredModel
-    # import pdb; pdb.set_trace()
 
 def register():
     from vllm import ModelRegistry
