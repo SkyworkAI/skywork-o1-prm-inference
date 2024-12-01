@@ -9,32 +9,33 @@
 <div align="center">
 <h4 align="center">
     <p>
-        <b>English</b> |
-        <a href="https://github.com/SkyworkAI/skywork-o1-prm-inference/blob/main/README_ch.md">中文</a>
+        <a href="https://github.com/SkyworkAI/skywork-o1-prm-inference/blob/main/README.md">English</a> |
+        <b>中文</b>
     <p>
 </h4>
 
 </div>
 
-This project provides an inference deployment guide for users of the Skywork-o1-prm model.
+本项目为使用Skywork-o1-prm模型的用户提供推理部署指南。
 
-# PRM inference
+# PRM模型推理
 
-## Download URL
-| Model | Download URL | Description |
+## 下载地址
+| 模型 | 下载地址 | 描述 |
 | --------- | ------ | ------ | 
-| Skywork-o1-Open-PRM-Qwen-2.5-1.5B     |  🤗[Skywork-o1-Open-PRM-Qwen-2.5-1.5B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen2.5-1.5B)|A specialized model designed to enhance reasoning capability through incremental process rewards, ideal for complex problem solving at a smaller scale. |
-| Skywork o1 Open-PRM-Qwen-2.5-7B     |  🤗[Skywork o1 Open-PRM-Qwen-2.5-7B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-7B)|Extends the capabilities of the 1.5B model by scaling up to handle more demanding reasoning tasks, pushing the boundaries of AI reasoning.|
-
-## Huggingface inference
+| Skywork-o1-Open-PRM-Qwen-2.5-1.5B     |  🤗[Skywork-o1-Open-PRM-Qwen-2.5-1.5B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen2.5-1.5B)|一个专门设计的模型，通过增量式过程奖励增强推理能力，非常适合小规模的复杂问题解决。|
+| Skywork o1 Open-PRM-Qwen-2.5-7B     |  🤗[Skywork o1 Open-PRM-Qwen-2.5-7B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-7B)|在1.5B模型的基础上进一步扩展能力，能够处理更高要求的推理任务，推动人工智能推理的边界。|
 
 
-1. clone skywork prm inference repo
+## Huggingface 推理
+
+
+1. 克隆skywork prm推理库
 ```shell
 git clone https://github.com/SkyworkAI/skywork-o1-prm-inference.git
 cd skywork-o1-prm-inference
 ```
-2. run_prm_inference
+2. 运行prm模型
 
 ```python
 from transformers import AutoTokenizer
@@ -66,9 +67,9 @@ print("step_rewards:",step_rewards[0])
 print("step_rewards:",step_rewards[1])
 ```
 
-## vllm server for inference
+## 通过vllm服务进行推理
 
-1. install vllm and install vllm prm plugin
+1. 安装vllm并安装vllm-prm插件
 ```shell
 pip install vllm==v0.6.4.post1
 git clone https://github.com/SkyworkAI/skywork-o1-prm-inference.git
@@ -76,7 +77,7 @@ cd skywork-o1-prm-inference
 pip install -e .
 ```
 
-2. start vllm server
+2. 开启vllm服务
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 vllm serve /path/to/prm_model \
     --host 0.0.0.0 \
@@ -87,7 +88,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 vllm serve /path/to/prm_model \
     --dtype auto
 ```
 
-3. request server for inference
+3. 发送推理请求
 
 ```python
 from openai import OpenAI
